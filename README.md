@@ -1,6 +1,10 @@
 # WeatherApp
 Bem-vindo à WeatherApp: Conectando Você ao Mundo Através do Clima
 
+<img src="./images/banco1" alt="banco de dados"></img>
+
+<img src="./images/banco2" alt="banco de dados"></img>
+
 Na WeatherApp, nossa missão é simples, mas poderosa: fornecer a você informações meteorológicas precisas e relevantes para que você possa se preparar, planejar e desfrutar de cada dia ao máximo. Somos mais do que apenas um aplicativo de previsão do tempo; somos uma ferramenta que conecta você ao mundo por meio do clima.
 
 O Nosso Propósito
