@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Alertas | WeatherApp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Estilo Embutido -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos do Formulário de Alertas */
+.alertas-section .container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.alertas-title {
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.alertas-form {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.alertas-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Estilização dos campos com maior especificidade */
+.alertas-form .form-control {
+    background-color: #f8f9fa !important;
+    border: 1px solid #000000 !important; /* Borda preta */
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    font-size: 16px !important;
+    font-family: 'Poppins', sans-serif !important;
+    color: #333 !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.alertas-form .form-control:focus {
+    border-color: #000000 !important; /* Borda preta ao focar */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3) !important; /* Sombra preta suave */
+    outline: none !important;
+    background-color: #fff !important;
+}
+
+/* Estilização do placeholder */
+.alertas-form .form-control::placeholder {
+    color: #000000 !important; /* Placeholder preto */
+    font-style: normal !important;
+    opacity: 0.8 !important;
+}
+
+/* Estilização específica para o select e suas opções */
+.alertas-form .form-control option {
+    color: #000000 !important; /* Opções do select pretas */
+}
+
+/* Estilização do placeholder do select (primeira opção) */
+.alertas-form .form-control option[disabled][selected] {
+    color: #000000 !important; /* Placeholder do select preto */
+    font-style: normal !important;
+}
+
+/* Estilização do botão */
+.alertas-form .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #1e90ff, #00b7eb);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(30, 144, 255, 0.3);
+}
+
+.alertas-form .btn-primary:hover {
+    background: linear-gradient(90deg, #1c86ee, #00a3d6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(30, 144, 255, 0.4);
+}
+
+.alertas-form .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(30, 144, 255, 0.2);
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- START NAV -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <img src="images/weatherapplogo-PhotoRoom.png-PhotoRoom.png" class="img-fluid2" alt="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">Sobre</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contato</a></li>
+                    <li class="nav-item"><a href="backend.html" class="nav-link">Buscar Local</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAV -->
+
+    <!-- Formulário de Alertas -->
+    <section class="alertas-section">
+        <div class="container">
+            <h3 class="alertas-title">Configure suas notificações personalizadas</h3>
+            <form id="alertas-form" class="alertas-form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Cidade (ex: Recife)" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="E-mail (ex: usuario@email.com)" required>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" required>
+                        <option value="">Frequência de Alertas</option>
+                        <option value="daily">1 vez por dia</option>
+                        <option value="weekly">1 vez por semana</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Salvar Preferências</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Log para verificar se o script está carregando
+        console.log("Página alertas.html carregada com sucesso!");
+        document.getElementById("alertas-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            console.log("Formulário enviado!");
+            alert("Preferências salvas! Em breve, você receberá os alertas.");
+        });
+    </script>
+</body>
+
+</html>
