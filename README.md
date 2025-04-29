@@ -1,28 +1,103 @@
-# WeatherApp
-Bem-vindo à WeatherApp: Conectando Você ao Mundo Através do Clima
+# WeatherApp 🌦️
+A WeatherApp é um aplicativo web simples para consultar o clima em tempo real, utilizando dados de uma API meteorológica. Este projeto foi desenvolvido para fins de aprendizado e prática de desenvolvimento web e CI/CD.
+✨ Funcionalidades
 
-Na WeatherApp, nossa missão é simples, mas poderosa: fornecer a você informações meteorológicas precisas e relevantes para que você possa se preparar, planejar e desfrutar de cada dia ao máximo. Somos mais do que apenas um aplicativo de previsão do tempo; somos uma ferramenta que conecta você ao mundo por meio do clima.
+Consulta de clima atual para uma cidade específica.
+Interface simples e intuitiva.
+Pipeline CI/CD configurada com GitHub Actions para automação de build, testes e deploy.
 
-O Nosso Propósito
+🛠️ Tecnologias Utilizadas
 
-O clima é uma parte essencial de nossas vidas, influenciando nossas decisões diárias, desde o que vestir até quando planejar uma viagem. Acreditamos que, ao disponibilizar informações meteorológicas confiáveis e intuitivas, podemos ajudar as pessoas a tomar decisões mais informadas e conscientes, minimizando surpresas desagradáveis e maximizando a alegria em suas atividades diárias.
+HTML, CSS, JavaScript: Para a interface e lógica do frontend.
+API de Clima: Integração com uma API de clima (ex.: OpenWeatherMap, a ser confirmada).
+GitHub Actions: Para automação de CI/CD.
 
-O Que Oferecemos
+🚀 Como Rodar o Projeto Localmente
+Siga os passos abaixo para executar o WeatherApp na sua máquina:
+Pré-requisitos
 
-Previsões Precisas: Utilizamos as mais recentes tecnologias e fontes de dados confiáveis para fornecer previsões meteorológicas precisas e atualizadas em tempo real. Esteja você planejando uma viagem, um evento ao ar livre ou simplesmente verificando o clima para sua área local, você pode contar conosco para obter informações confiáveis.
+Navegador web (ex.: Chrome, Firefox).
+(Opcional) Uma chave de API para a OpenWeatherMap, se aplicável.
 
-Personalização: Sabemos que as necessidades de clima de cada pessoa são diferentes. É por isso que oferecemos recursos de personalização para adaptar nossas informações às suas preferências e necessidades individuais.
+Passos
 
-Alertas em Tempo Real: Mantenha-se seguro e preparado com nossos alertas meteorológicos em tempo real. Informaremos sobre condições climáticas adversas iminentes para que você possa tomar medidas preventivas.
+Clone o repositório:
+git clone https://github.com/edlesonjrr/WeatherApp.git
+cd WeatherApp
 
-Informações Globais: Não importa onde você esteja no mundo, a WeatherApp o mantém conectado com o clima em qualquer lugar. Seja para planejar viagens ou simplesmente explorar as condições climáticas em outras partes do globo, estamos aqui para você.
 
-Nosso Compromisso com o Mundo
+Abra o projeto:
 
-Na WeatherApp, acreditamos que a conscientização sobre o clima é crucial para um futuro sustentável. Estamos comprometidos em contribuir para a educação e a ação em relação às mudanças climáticas. Trabalhamos para fornecer informações sobre o clima que permitam tomar decisões ambientalmente responsáveis e promover a sustentabilidade em nossa comunidade global.
+Se for um projeto estático, abra o arquivo index.html diretamente no navegador:open index.html  # Mac
+start index.html  # Windows
 
-Junte-se a nós na WeatherApp e explore o mundo por meio do clima. Estamos aqui para ajudar você a planejar, se adaptar e tirar o máximo proveito de cada dia. Apreciamos sua confiança em nós e estamos ansiosos para servi-lo de forma excepcional.
 
-Comece a usar a WeatherApp hoje e esteja sempre um passo à frente do clima. Obrigado por escolher a WeatherApp como seu parceiro meteorológico confiável.
+Se houver dependências (ex.: Node.js), instale-as:npm install
+npm start
+
+
+
+
+Configure a API de Clima (se aplicável):
+
+Crie um arquivo .env na raiz do projeto.
+Adicione sua chave da API:API_KEY=sua-chave-da-openweathermap
+
+
+Siga as instruções da API para integração.
+
+
+Acesse no navegador:
+
+Abra http://localhost:3000 (ou a porta configurada) para ver o WeatherApp.
+
+
+
+🌐 Deploy
+Atualmente, o deploy é simulado na pipeline CI/CD. Para hospedar o WeatherApp, você pode usar:
+
+GitHub Pages: Configure em Settings → Pages, usando a branch main.
+Netlify: Conecte o repositório ao Netlify para deploy automático.
+
+🏗️ Pipeline CI/CD
+O projeto utiliza GitHub Actions para automação de CI/CD. A pipeline roda em pushes e pull requests nas branches main e feat/*.
+Estágios da Pipeline
+
+Initialization: Simula instalação de dependências.
+Build: Simula compilação do projeto.
+Security Check: Simula verificações de segurança.
+Package: Simula empacotamento.
+Quality Tests: Simula testes de qualidade.
+Validation: Simula validação do artefato.
+Deploy: Simula deploy (produção para main, desenvolvimento para outras branches).
+
+Fluxo de Desenvolvimento
+
+main: Branch de produção.
+feat/<nome>: Branches de desenvolvimento (ex.: feat/update).
+Crie pull requests de feat/<nome> para main para revisar e mesclar mudanças.
+
+🤝 Como Contribuir
+
+Fork o repositório.
+Crie uma branch para sua feature:git checkout -b feat/sua-feature
+
+
+Faça suas alterações e commit:git commit -m "Adiciona sua feature"
+
+
+Envie para o repositório remoto:git push origin feat/sua-feature
+
+
+Abra um pull request para a branch main.
+
+📝 Licença
+Este projeto está licenciado sob a MIT License.
+📧 Contato
+Para dúvidas ou sugestões, entre em contato:
+
+GitHub: edlesonjrr
+Email: (adicione seu email, se desejar)
+
 
 Sinta o Clima. Viva a Vida. WeatherApp.
