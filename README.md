@@ -124,7 +124,7 @@ Este projeto está licenciado sob a **MIT License**.
 Para dúvidas ou sugestões, entre em contato:
 
 - **GitHub**: [edlesonjrr](https://github.com/edlesonjrr)
-- **Email**: (adicione seu email, se desejar)
+- **Email**: edleson050@gmail.com
 
 ---
 
