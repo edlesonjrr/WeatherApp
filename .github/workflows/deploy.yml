@@ -1,0 +1,156 @@
+name: WeatherApp CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - feat/update
+
+jobs:
+  init:
+    name: Initialization
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Simulate Dependency Installation
+        run: |
+          echo "Inicializando o ambiente..."
+          echo "Simulando a instalação de dependências..."
+          mkdir -p dependencies
+          echo "Dependências instaladas" > dependencies/setup.txt
+      - name: Publish Dependencies Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dependencies
+          path: dependencies/
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    needs: init
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Node.js Dependencies
+        run: |
+          echo "Instalando dependências do Node.js..."
+          npm install || echo "Nenhuma dependência Node.js encontrada, prosseguindo..."
+      - name: Simulate Build
+        run: |
+          echo "Compilando o projeto..."
+          echo "Simulando a geração de um artefato..."
+          mkdir -p build
+          echo "Artefato gerado" > build/artifact.txt
+      - name: Publish Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build_output
+          path: build/
+
+  security:
+    name: Security Check
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Simulate Security Scan
+        run: |
+          echo "Executando verificações de segurança..."
+          echo "Simulando uma análise de segurança..."
+          echo "Nenhuma vulnerabilidade encontrada" > security_report.txt
+      - name: Publish Security Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: security_report
+          path: security_report.txt
+
+  package:
+    name: Package
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build_output
+          path: build/
+      - name: Simulate Packaging
+        run: |
+          echo "Empacotando o artefato..."
+          echo "Simulando o empacotamento..."
+          mkdir -p package
+          if [ -f "build/artifact.txt" ]; then
+            cp build/artifact.txt package/packaged_artifact.txt
+            echo "Artefato empacotado com sucesso" > package/package_info.txt
+          else
+            echo "Erro: Arquivo build/artifact.txt não encontrado"
+            exit 1
+          fi
+      - name: Publish Package Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: package_output
+          path: package/
+
+  quality:
+    name: Quality Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Simulate Quality Tests
+        run: |
+          echo "Executando testes de qualidade..."
+          echo "Simulando testes unitários..."
+          echo "Todos os testes passaram" > quality_report.txt
+      - name: Publish Quality Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: quality_report
+          path: quality_report.txt
+
+  validation:
+    name: Validation
+    runs-on: ubuntu-latest
+    needs: [security, package, quality]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Download Package Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: package_output
+          path: package/
+      - name: Simulate Validation
+        run: |
+          echo "Validando o artefato..."
+          echo "Simulando validação em ambiente de teste..."
+          if [ -f "package/packaged_artifact.txt" ]; then
+            echo "Validação bem-sucedida"
+          else
+            echo "Erro: Artefato não encontrado"
+            exit 1
+          fi
+
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: validation
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Simulate Deployment
+        run: |
+          echo "Implantando a aplicação..."
+          echo "Simulando deploy em produção..."
+          echo "Deploy concluído com sucesso" > deploy_log.txt
+      - name: Publish Deploy Log
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy_log
+          path: deploy_log.txt
