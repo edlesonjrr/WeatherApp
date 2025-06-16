@@ -7,36 +7,36 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                bat 'bash init.sh'
+                bat 'bash scripts/init.sh'
             }
         }
         stage('Build') {
             parallel {
                 stage('Security') {
                     steps {
-                        bat 'bash security-check.sh'
+                        bat 'bash scripts/security-check.sh'
                     }
                 }
                 stage('Quality') {
                     steps {
-                        bat 'bash code-quality.sh'
+                        bat 'bash scripts/code-quality.sh'
                     }
                 }
                 stage('Package') {
                     steps {
-                        bat 'bash package.sh'
+                        bat 'bash scripts/package.sh'
                     }
                 }
             }
         }
         stage('Validation') {
             steps {
-                bat 'bash test.sh'
+                bat 'bash scripts/test.sh'
             }
         }
         stage('Deploy') {
             steps {
-                bat 'bash deploy.sh'
+                bat 'bash scripts/deploy.sh'
             }
         }
     }
