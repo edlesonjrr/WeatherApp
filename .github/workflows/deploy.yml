@@ -87,7 +87,7 @@ jobs:
           path: build/
       - name: Simulate Packaging
         run: |
-          echo "Empacotando o artefato..."
+          echo "Empacotando o artefato... e preparando para simular empacotamento"
           echo "Simulando o empacotamento..."
           mkdir -p package || { echo "Erro ao criar pasta package"; exit 1; }
           if [ -f "build/artifact.txt" ]; then
