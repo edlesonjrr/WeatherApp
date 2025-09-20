@@ -8,6 +8,7 @@ A WeatherApp é um aplicativo web simples para consultar o clima em tempo real, 
 - Consulta de clima atual para uma cidade específica.
 - Interface simples e intuitiva.
 - Pipeline CI/CD configurada com GitHub Actions para automação de build, testes e deploy.
+- Testando Jenkins coomo pipeline alternativa.
 
 ## 🛠️ Tecnologias Utilizadas
 
