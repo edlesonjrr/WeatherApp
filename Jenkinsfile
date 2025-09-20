@@ -34,7 +34,7 @@ pipeline {
                 bat 'bash scripts/test.sh'
             }
         }
-        stage('Deploy') {
+        stage('Deploy and push') {
             steps {
                 bat 'bash scripts/deploy.sh'
             }
