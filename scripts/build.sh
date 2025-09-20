@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "[BUILD] Montando versão do site..."
+echo "[BUILD] Montando versão do site... e construindo"
 
 # Cria pasta de build e copia arquivos essenciais
 mkdir -p dist
