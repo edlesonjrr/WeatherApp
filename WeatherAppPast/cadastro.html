@@ -1,32 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <title>Cadastro/Login WeatherApp</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
     <link rel="stylesheet" href="css/cadastro.css">
     <link rel="shortcut icon" href="./images/carroseuimage.webp" type="image/x-icon">
 </head>
@@ -35,62 +15,147 @@
     <input type="checkbox" id="click">
     <div class="main-container">
         <div class="form-container">
+            <!-- LOGIN -->
             <div class="sign-in">
-                <form action="#">
+                <form id="login-form">
                     <h1>Login</h1>
-                    <div class="social-container">
-                        <a href="#"><span class="icon-google"></span></a></li>
-                        <a href="#"><span class="icon-facebook"></span></a></li>
-                        <a href="#"><span class="icon-linkedin"></span></a></li>
-                    </div>
-                    <span>ou use outra conta</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Senha" />
-                    <a href="#" class="fogot-pass">esqueceu sua senha?</a>
-                    <button>Login</button>
+                    <input type="email" id="login-email" placeholder="Email" required />
+                    <input type="password" id="login-senha" placeholder="Senha" required />
+                    <a href="#" class="fogot-pass">Esqueceu sua senha?</a>
+                    <button type="submit">Login</button>
+
+                    <!-- ALERTA (login) -->
+                    <div id="login-alert" class="alert" role="alert" aria-live="polite"></div>
                 </form>
             </div>
 
+            <!-- CADASTRO -->
             <div class="sign-up">
-                <form action="#">
+                <form id="cadastro-form">
                     <h1>Cadastro</h1>
-                    <div class="social-container">
-                        <a href="index.html"><span class="icon-google"></span></a></li>
-                        <a href="index.html"><span class="icon-facebook"></span></a></li>
-                        <a href="index.html"><span class="icon-linkedin"></span></a></li>
-                    </div>
-                    <span>ou use um email já registrado</span>
-                    <input type="text" placeholder="Nome" />
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Senha" />
-                    <button>Cadastre-se</button>
-                    <a href="alertas.html" class="botaocad2">receba notificações sobre o clima pelo whatsapp</a>
+                    <input type="text" id="cadastro-nome" placeholder="Nome" required />
+                    <input type="email" id="cadastro-email" placeholder="Email" required />
+                    <input type="password" id="cadastro-senha" placeholder="Senha" required />
+                    <button type="submit">Cadastre-se</button>
+
+                    <!-- ALERTA (cadastro) -->
+                    <div id="cadastro-alert" class="alert" role="alert" aria-live="polite"></div>
                 </form>
             </div>
         </div>
 
+        <!-- SLIDE -->
         <div class="slide-container">
             <div class="slide-panel">
                 <div class="slide-left">
-                    <h1>Bem vindo!</h1>
-                    <br>
-                    <p>Cadastre-se no nosso site e receba notificações do clima em
-                        tempo real!</p>
-                    <br>
+                    <h1>Bem-vindo!</h1>
+                    <p>Cadastre-se no nosso site e receba notificações do clima em tempo real!</p>
                     <label for="click" class="slide">Faça seu cadastro</label>
                     <a href="index.html" class="botaocad">Página inicial</a>
                 </div>
                 <div class="slide-right">
                     <h1>Faça o login!</h1>
-                    <br>
                     <p>Entre na sua conta e venha fazer parte da WeatherApp!</p>
-                    <br>
                     <label for="click" class="slide">Faça seu login</label>
                     <a href="index.html" class="botaocad">Página inicial</a>
                 </div>
             </div>
         </div>
-
     </div>
 
+    <!-- FIREBASE SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }
+            from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc }
+            from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        // Configuração Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCzucXE5AZnS94OY6gRV4eIkYMAjA0P8E0",
+            authDomain: "bd-weatherapp.firebaseapp.com",
+            projectId: "bd-weatherapp",
+            storageBucket: "bd-weatherapp.firebasestorage.app",
+            messagingSenderId: "396011234969",
+            appId: "1:396011234969:web:ffbcdd9cd33f9dc7fe7a08",
+            measurementId: "G-3RKXKVWDVW"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Função para traduzir erros do Firebase
+        function traduzErroFirebase(errorCode) {
+            switch (errorCode) {
+                case "auth/email-already-in-use":
+                    return "Este email já está em uso.";
+                case "auth/invalid-email":
+                    return "Formato de email inválido.";
+                case "auth/weak-password":
+                    return "A senha deve ter pelo menos 6 caracteres.";
+                case "auth/user-not-found":
+                    return "Usuário não encontrado.";
+                case "auth/wrong-password":
+                    return "Senha incorreta.";
+                default:
+                    return "Ocorreu um erro. Tente novamente.";
+            }
+        }
+
+        // Função para exibir alerta
+        function showAlert(formType, message, type) {
+            const alertDiv = document.getElementById(`${formType}-alert`);
+            alertDiv.textContent = message;
+            alertDiv.className = `alert ${type}`;
+            alertDiv.style.display = "block";
+        }
+
+        // CADASTRO
+        document.getElementById("cadastro-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const nome = document.getElementById("cadastro-nome").value;
+            const email = document.getElementById("cadastro-email").value;
+            const senha = document.getElementById("cadastro-senha").value;
+
+            try {
+                const userCred = await createUserWithEmailAndPassword(auth, email, senha);
+
+                // Mostra sucesso do cadastro
+                showAlert("cadastro", "Usuário cadastrado com sucesso!", "success");
+
+                try {
+                    await setDoc(doc(db, "users", userCred.user.uid), {
+                        nome: nome,
+                        email: email
+                    });
+                } catch (firestoreError) {
+                    showAlert("cadastro", "Cadastro feito, mas houve erro ao salvar no banco.", "error");
+                    console.error("Erro Firestore:", firestoreError);
+                }
+
+            } catch (error) {
+                showAlert("cadastro", traduzErroFirebase(error.code), "error");
+            }
+        });
+
+        // LOGIN
+        document.getElementById("login-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("login-email").value;
+            const senha = document.getElementById("login-senha").value;
+
+            try {
+                await signInWithEmailAndPassword(auth, email, senha);
+                showAlert("login", "Login feito com sucesso!", "success");
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 2000); // espera um pouco para o usuário ver o alerta
+            } catch (error) {
+                showAlert("login", traduzErroFirebase(error.code), "error");
+            }
+        });
+    </script>
 </body>
+</html>
