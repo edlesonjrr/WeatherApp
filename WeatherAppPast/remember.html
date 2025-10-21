@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="shortcut icon" href="image/foguetenew.ico" type="image/x-icon">
+    <title>Mentorada | Recuperar Senha</title>
+</head>
+
+<body>
+    <!--Box Principal Recuperar senha-->
+    <div class="main-container">
+        <div class="form-container">
+            <div class="sign-in">
+                <form>
+                    <h1>Recuperar senha</h1>
+                    <span>Digite seu email de recuperação</span>
+                    <input type="email" id="emailRecuperacao" placeholder="Email" required />
+                    <button type="button" onclick="enviarEmail()">Enviar</button>
+                    <br>
+                    <!-- Mensagem de feedback para recuperação -->
+                    <div id="mensageFeedbackRecuperar" class="mensageFeedbackRecuperar">Você receberá um link de recuperação no seu email! Email enviado.</div>
+                    <br>
+                    <br>
+                    <a href="./cadastro.html" class="botaocad">Voltar</a>
+                </form>
+            </div>
+        </div>
+
+        <!--Box Slider (borda amarela)-->
+        <div class="slide-container">
+            <div class="slide-panel">
+                <img src="/WeatherApp/WeatherAppPast/images/foguetenew.ico" alt="foguete" style="transform:translateX(-200px);">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy;Todos os direitos reservados. 2024 @EdlesonJr</p>
+    </footer>
+
+    <style>
+          .mensageFeedbackRecuperar {
+            margin-top: 10px;
+            color: green;
+            font-size: 14px;
+            display: none; /* Oculta inicialmente */
+        }
+    </style>
+    <script>
+        function enviarEmail() {
+            const email = document.getElementById('emailRecuperacao').value;
+
+            if (email) {
+                const feedback = document.getElementById('mensageFeedbackRecuperar');
+                feedback.style.display = 'block'; // Exibe a mensagem de feedback
+
+                // Após 4 segundos, esconde a mensagem
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                }, 4000);
+            }
+        }
+    </script>
+</body>
+
+</html>
