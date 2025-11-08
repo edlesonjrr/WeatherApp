@@ -122,3 +122,34 @@ body {
 .botaoinicial:hover::after {
     width: 50%;
 }
+
+.botaohistorico {
+    margin-left: 75px;
+    display: flex;
+    margin-top: 10%;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.botaohistorico::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: yellow;
+    transition: width 0.4s;
+}
+
+.botaohistorico:hover {
+    color: yellow;
+    transform: scale(1.1);
+}
+
+.botaohistorico:hover::after {
+    width: 50%;
+}

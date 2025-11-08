@@ -1,0 +1,92 @@
+body {
+    background-image:url(/WeatherApp/WeatherAppPast/images/rain.jpg);
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: black;
+    opacity: 0.8;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.historico-container {
+    margin-top: 20px;
+    text-align: left;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.registro {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.btn-pdf {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: yellow;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.btn-pdf:hover {
+    transform: scale(1.05);
+}
+
+.voltar {
+    display: inline-block;
+    margin-top: 15px;
+    color: white;
+    text-decoration: none;
+    padding-left: 40px;
+}
+
+.voltar:hover {
+    color: yellow;
+}
+
+
+.btn-limpar {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-limpar:hover {
+    transform: scale(1.05);
+    background-color: darkred;
+}
+
+/* Animação de mensagem de feedback */
+.mensagem {
+    margin-top: 15px;
+    color: green;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+.mensagem.visivel {
+    opacity: 1;
+}
