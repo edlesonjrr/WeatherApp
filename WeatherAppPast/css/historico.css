@@ -1,5 +1,5 @@
 body {
-    background-image:url(/WeatherApp/WeatherAppPast/images/rain.jpg);
+   background-image: url("../images/rain.jpg");
     color: white;
     font-family: 'Manrope', sans-serif;
     display: flex;
