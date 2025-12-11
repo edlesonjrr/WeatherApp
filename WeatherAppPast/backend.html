@@ -14,27 +14,194 @@
 </head>
 
 <body>
-    <div class="caixa-maior">
-        <input class="input-cidade" placeholder="Digite o nome da cidade">
-        <button class="botao-busca" onclick="cliqueiNoBotao()">
-            <img class="img-busca" src="https://www.svgrepo.com/show/488200/find.svg" alt="busca">
-        </button>
+    <div class="container-geral">
 
-        <div class="caixa-media">
-            <h2 class="cidade">Tempo em Olinda</h2>
-            <p class="temp">28°</p>
+        <!-- CAIXA PRINCIPAL -->
+        <div class="caixa-maior">
 
-            <div class="caixa-menor">
-                <img class="img-previsao" src="https://openweathermap.org/img/wn/04n.png" alt="icone-do-tempo">
-                <p class="texto-previsao">Ensolarado</p>
+            <input class="input-cidade" placeholder="Digite o nome da cidade">
+
+            <button class="botao-busca" onclick="cliqueiNoBotao()">
+                <img class="img-busca" src="https://www.svgrepo.com/show/488200/find.svg" alt="busca">
+            </button>
+
+            <div class="caixa-media">
+                <h2 class="cidade">Tempo em Olinda</h2>
+                <p class="temp">28°</p>
+
+                <div class="caixa-menor">
+                    <img class="img-previsao" src="https://openweathermap.org/img/wn/04n.png" alt="icone-do-tempo">
+                    <p class="texto-previsao">Ensolarado</p>
+                </div>
+
+                <p class="umidade">💧 Umidade: 70%</p>
             </div>
 
-            <p class="umidade">Umidade: 70%</p>
+            <a href="index.html" class="botaoinicial">Página Home</a>
+            <a href="historico.html" class="botaohistorico">Acessar Histórico</a>
+
+            <!-- STATUS DO PROCESSAMENTO -->
+            <div id="status-paralelo" style="margin-top: 20px; display: none; text-align:center;">
+                <div class="loader-wrapper">
+                    <div class="loader"></div>
+                    <p class="loader-text">Processando em paralelo...</p>
+                </div>
+            </div>
+
+            <!-- RESULTADO EM CAIXA -->
+            <div id="resultado-paralelo-box" style="display:none; margin-top: 15px;">
+                <div class="resultado-box-inner">
+                    <span id="resultado-paralelo"></span>
+                </div>
+            </div>
+
+            <!-- Botão de teste -->
+            <button class="botao-busca teste-paralelo-btn" onclick="testarParalelismo()">
+                Testar Paralelismo
+            </button>
+
+            <!-- Botão para mostrar gráfico -->
+            <button class="botao-busca grafico-btn" onclick="toggleGrafico()">
+                Ver gráfico de temperatura
+            </button>
+
         </div>
 
-        <a href="index.html" class="botaoinicial">Página Home</a>
-        <a href="historico.html" class="botaohistorico">Acessar Histórico</a>
+        <!-- GRÁFICO LATERAL -->
+        <div class="caixa-grafico" id="caixa-grafico">
+            <h3>Gráfico de Temperatura</h3>
+            <canvas id="graficoCanvas" width="300" height="200"></canvas>
+        </div>
+
     </div>
+
+    <!-- TODOS OS STYLES QUE ESTAVAM ESPALHADOS -->
+    <style>
+        .loader-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: yellow;
+            border-radius: 50%;
+            animation: spin 1s linear infinite, glow 1.5s ease-in-out infinite;
+        }
+
+        .loader-text {
+            color: yellow;
+            font-size: 15px;
+            font-weight: 600;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 4px yellow;
+            }
+
+            50% {
+                box-shadow: 0 0 15px yellow;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resultado-box-inner {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px 15px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            animation: fadeIn 0.4s ease;
+        }
+
+        .teste-paralelo-btn {
+            margin-top: 20px;
+            width: 100%;
+            font-size: 14px;
+            color: white !important;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+
+            /* Borda padrão */
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Sombra + brilho suave */
+        .teste-paralelo-btn:hover {
+            transform: scale(1.06);
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.6);
+            border-color: yellow;
+        }
+
+        /* Borda animada (efeito de luz passando) */
+        .teste-paralelo-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+
+            background: linear-gradient(120deg,
+                    transparent,
+                    rgba(255, 255, 0, 0.5),
+                    transparent);
+
+            transition: all 0.4s ease;
+        }
+
+        /* Anima a luz passando da esquerda pra direita */
+        .teste-paralelo-btn:hover::before {
+            left: 100%;
+        }
+    </style>
+
 </body>
 
 </html>
